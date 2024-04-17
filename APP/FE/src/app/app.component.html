@@ -1,42 +1,278 @@
-<form [formGroup]="companyForm">
-  <div class="d-flex justify-content-center">
-    <div class="row">
-      <div class="col-6">
-        <p>
-          <label for="companyName">Company Name </label>
-          <br>
-          <input type="text" id="companyName" name="companyName" formControlName="companyName">
-        </p>
-       
-        <p>
-          <label for="CompanyAddress">Company Address</label>
-          <br>
-          <input type="text" id="CompanyAddress" name="CompanyAddress" formControlName="CompanyAddress">
-        </p>
-   
-        <p>
-          <label for="country">Country </label>
-          <select id="country" name="country" formControlName="country">
-            <option value="1">India</option>
-            <option value="2">USA</option>
-            <option value="3">England</option>
-            <option value="4">Singapore</option>
-          </select>
-        </p>
+<div class="container">
+  <form [formGroup]="companyForm">
+    <div *ngIf="!hideBasic">
+      <div class="row">
+        <div class="col-6">
+          <section>
+            <h3 class="my-4">Basic Company Info</h3>
+            <div class="row">
+              <div class="col-md-12 mb-2">
+                <label for="companyName" class="form-label">Company Name *</label>
+                <input autocomplete="off" type="text" class="form-control" id="companyName"
+                  formControlName="companyName">
+              </div>
+              <div class="col-md-12 mb-2">
+                <label for="CompanyAddress" class="form-label">Head Office Address *</label>
+                <input autocomplete="off" type="text" class="form-control" id="CompanyAddress"
+                  formControlName="CompanyAddress">
+              </div>
+              <div class="col-md-12 mb-2">
+                <label for="country" class="form-label">Country</label>
+                <select class="form-control" id="country" formControlName="country">
+                  <option value="IN">IN</option>
+                  <option value="USA">USA</option>
+                  <option value="UAE">UAE</option>
+                  <option value="UK">UK</option>
+                </select>
+              </div>
+              <div class="col-4 mb-2">
+                <label for="pincode" class="form-label">Pincode</label>
+                <input autocomplete="off" type="text" class="form-control" id="pincode" formControlName="pincode">
+              </div>
+              <div class="col-8 mb-2">
+                <label for="city" class="form-label">City</label>
+                <input autocomplete="off" type="text" class="form-control" id="city" formControlName="city">
+              </div>
+              <div class="col-4 mb-2">
+                <label for="countryCode" class="form-label">Country Code</label>
+                <select class="form-control" id="country" formControlName="countryCode">
+                  <option value="IN">IN</option>
+                  <option value="USA">USA</option>
+                  <option value="UAE">UAE</option>
+                  <option value="UK">UK</option>
+                </select>
+              </div>
+              <div class="col-8 mb-2">
+                <label for="companyContact" class="form-label">Contact Number</label>
+                <input autocomplete="off" type="text" class="form-control" id="companyContact"
+                  formControlName="companyContact" maxlength="6" minlength="6">
+              </div>
+              <div class="col-md-12 mb-2">
+                <label for="website" class="form-label">Website URL</label>
+                <input autocomplete="off" type="text" class="form-control" id="website"
+                  formControlName="companyWebsite">
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3 class="my-4">Key Contact Person</h3>
+            <div class="row">              
+              <ng-container formGroupName="keyContact">
+              <div class="col-md-12 mb-2">
+                <label for="name" class="form-label">Name *</label>
+                <input autocomplete="off" type="text" class="form-control" id="name" formControlName="name">
+              </div>
+              <div class="col-md-12 mb-2">
+                <label for="designation" class="form-label">Designation *</label>
+                <input autocomplete="off" type="text" class="form-control" id="designation"
+                  formControlName="designation">
+              </div>
+              <div class="col-4 mb-2">
+                <label for="countryCode" class="form-label">Country Code</label>
+                <select class="form-control" id="country" formControlName="countryCode">
+                  <option value="IN">IN</option>
+                  <option value="USA">USA</option>
+                  <option value="UAE">UAE</option>
+                  <option value="UK">UK</option>
+                </select>
+              </div>
+              <div class="col-8 mb-2">
+                <label for="companyContact" class="form-label">Contact Number</label>
+                <input autocomplete="off" type="text" class="form-control" id="companyContact"
+                  formControlName="companyContact" maxlength="6" minlength="6">
+              </div>
+              <div class="col-md-12 mb-2">
+                <label for="email" class="form-label">Email</label>
+                <input autocomplete="off" type="text" class="form-control" id="email" formControlName="email">
+              </div>
+              </ng-container>
+            </div>
+          </section>
+          <div class="my-4">
+            <button type="button" class="btn btn-primary w-100" (click)="stepper(1)">Continue</button>
+          </div>
+        </div>
+        <div class="col-6">
+
+        </div>
       </div>
-      <div class="col-6">
-        
+    </div>
+    <div *ngIf="!hideManagement">
+      <div class="row">
+        <div class="col-6">
+          <section>
+            <h3 class="my-4">Tell us more about yourself</h3>
+            <div class="row">
+                <div class="col-md-12 mb-2">
+                  <label for="brief" class="form-label">Brief Company Profile *</label>
+                  <textarea autocomplete="off" type="text" class="form-control" id="brief" placeholder="Description(Max 200 words)"
+                    formControlName="brief"></textarea>
+                </div>
+                <div class="col-md-12 mb-2">
+                  <label for="socialURL" class="form-label">Meta/LinkedIn URL, etc</label>
+                  <input autocomplete="off" type="text" class="form-control" id="socialURL" placeholder="https://"
+                    formControlName="socialURL">
+                </div>
+                <div class="col-md-12 mb-2">
+                  <label for="mission" class="form-label">Vision / Mission</label>
+                  <textarea autocomplete="off" type="text" class="form-control" id="mission" placeholder="Description(Max 200 words)"
+                    formControlName="mission"></textarea>
+                </div>
+            </div>
+          </section>
+          <section>
+            <h3 class="my-4">Management Team Details</h3>
+            <div class="row">
+              <div class="col-md-12 mb-2">
+                <label for="name" class="form-label">Name *</label>
+                <input autocomplete="off" type="text" class="form-control" id="name" formControlName="name">
+              </div>
+              <div class="col-md-12 mb-2">
+                <label for="designation" class="form-label">Designation *</label>
+                <input autocomplete="off" type="text" class="form-control" id="designation"
+                  formControlName="designation">
+              </div>
+              <div class="col-4 mb-2">
+                <label for="countryCode" class="form-label">Country Code</label>
+                <select class="form-control" id="country" formControlName="countryCode">
+                  <option value="IN">IN</option>
+                  <option value="USA">USA</option>
+                  <option value="UAE">UAE</option>
+                  <option value="UK">UK</option>
+                </select>
+              </div>
+              <div class="col-8 mb-2">
+                <label for="companyContact" class="form-label">Contact Number</label>
+                <input autocomplete="off" type="text" class="form-control" id="companyContact"
+                  formControlName="companyContact" maxlength="6" minlength="6">
+              </div>
+              <div class="col-md-12 mb-2">
+                <label for="email" class="form-label">Email</label>
+                <input autocomplete="off" type="text" class="form-control" id="email" formControlName="email">
+              </div>
+            </div>
+          </section>
+          <div class="row">
+            <div class="col-4">
+              <div class="my-4">
+                <button type="button" class="btn btn-primary w-100" (click)="stepper(0)">Back</button>
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="my-4">
+                <button type="button" class="btn btn-primary w-100" (click)="stepper(2)">Continue</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+
+        </div>
       </div>
-    </div> 
-    <div class="row">
-      <div class="col-6">
-  
+    </div>
+    <div *ngIf="!hideProducts">
+      <div class="row">
+        <div class="col-6">
+          <section>
+            <h3 class="my-4">Basic Company Info</h3>
+            <div class="row">
+              <div class="col-md-12 mb-2">
+                <label for="companyName" class="form-label">Company Name *</label>
+                <input autocomplete="off" type="text" class="form-control" id="companyName"
+                  formControlName="companyName">
+              </div>
+              <div class="col-md-12 mb-2">
+                <label for="CompanyAddress" class="form-label">Head Office Address *</label>
+                <input autocomplete="off" type="text" class="form-control" id="CompanyAddress"
+                  formControlName="CompanyAddress">
+              </div>
+              <div class="col-md-12 mb-2">
+                <label for="country" class="form-label">Country</label>
+                <select class="form-control" id="country" formControlName="country">
+                  <option value="IN">IN</option>
+                  <option value="USA">USA</option>
+                  <option value="UAE">UAE</option>
+                  <option value="UK">UK</option>
+                </select>
+              </div>
+              <div class="col-4 mb-2">
+                <label for="pincode" class="form-label">Pincode</label>
+                <input autocomplete="off" type="text" class="form-control" id="pincode" formControlName="pincode">
+              </div>
+              <div class="col-8 mb-2">
+                <label for="city" class="form-label">City</label>
+                <input autocomplete="off" type="text" class="form-control" id="city" formControlName="city">
+              </div>
+              <div class="col-4 mb-2">
+                <label for="countryCode" class="form-label">Country Code</label>
+                <select class="form-control" id="country" formControlName="countryCode">
+                  <option value="IN">IN</option>
+                  <option value="USA">USA</option>
+                  <option value="UAE">UAE</option>
+                  <option value="UK">UK</option>
+                </select>
+              </div>
+              <div class="col-8 mb-2">
+                <label for="companyContact" class="form-label">Contact Number</label>
+                <input autocomplete="off" type="text" class="form-control" id="companyContact"
+                  formControlName="companyContact" maxlength="6" minlength="6">
+              </div>
+              <div class="col-md-12 mb-2">
+                <label for="website" class="form-label">Website URL</label>
+                <input autocomplete="off" type="text" class="form-control" id="website"
+                  formControlName="companyWebsite">
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3 class="my-4">Key Contact Person</h3>
+            <div class="row">
+              <div class="col-md-12 mb-2">
+                <label for="name" class="form-label">Name *</label>
+                <input autocomplete="off" type="text" class="form-control" id="name" formControlName="name">
+              </div>
+              <div class="col-md-12 mb-2">
+                <label for="designation" class="form-label">Designation *</label>
+                <input autocomplete="off" type="text" class="form-control" id="designation"
+                  formControlName="designation">
+              </div>
+              <div class="col-4 mb-2">
+                <label for="countryCode" class="form-label">Country Code</label>
+                <select class="form-control" id="country" formControlName="countryCode">
+                  <option value="IN">IN</option>
+                  <option value="USA">USA</option>
+                  <option value="UAE">UAE</option>
+                  <option value="UK">UK</option>
+                </select>
+              </div>
+              <div class="col-8 mb-2">
+                <label for="companyContact" class="form-label">Contact Number</label>
+                <input autocomplete="off" type="text" class="form-control" id="companyContact"
+                  formControlName="companyContact" maxlength="6" minlength="6">
+              </div>
+              <div class="col-md-12 mb-2">
+                <label for="email" class="form-label">Email</label>
+                <input autocomplete="off" type="text" class="form-control" id="email" formControlName="email">
+              </div>
+            </div>
+          </section>
+          <div class="row">
+            <div class="col-4">
+              <div class="my-4">
+                <button type="button" class="btn btn-primary w-100" (click)="stepper(1)">Back</button>
+              </div>
+            </div>
+            <div class="col-6 p-0">
+              <div class="my-4">
+                <button type="button" class="btn btn-primary w-100" (click)="submitForms()">Finish</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+
+        </div>
       </div>
-    </div> 
-    <div class="row">
-      <p>
-        <button type="submit">Submit</button>
-      </p>
-    </div> 
-  </div>
-</form>
+    </div>
+  </form>
+</div>

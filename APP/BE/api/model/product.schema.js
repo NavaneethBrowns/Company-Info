@@ -18,7 +18,10 @@ const productSchema = mongoose.Schema({
     }
 },
 {
-    timeStamps: true
+    collection: 'product',
+    strict: true,
+    versionKey: false,
+    timestamps: true,
 });
 
 export const productModel =  mongoose.model('product',productSchema);

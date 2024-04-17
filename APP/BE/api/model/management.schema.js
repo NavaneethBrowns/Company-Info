@@ -1,17 +1,14 @@
-import mongoose from "mongoose";
+import mongoose, { Collection } from "mongoose";
 
 const managementSchema = mongoose.Schema({
     managementName: {
         type: String,
-        required: true
     },
     managementDesignation: {
         type: String,
-        required: true
     },
     summary: {
         type: String,
-        required: true
     },
     linkedIn: {
         type: String,
@@ -22,7 +19,10 @@ const managementSchema = mongoose.Schema({
     }
 },
 {
-    timeStamps: true
+    collection: 'management',
+    strict: true,
+    versionKey: false,
+    timestamps: true,
 });
 
 export const managementModel = mongoose.model('management',managementSchema);

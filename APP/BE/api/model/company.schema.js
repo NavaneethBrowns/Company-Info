@@ -3,9 +3,10 @@ import mongoose from "mongoose";
 const companySchema = mongoose.Schema({
     companyName: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
-    CompanyAddress: {
+    companyAddress: {
         type: String,
         required: true
     },
@@ -72,7 +73,10 @@ const companySchema = mongoose.Schema({
     }
 },
 {
-    timeStamps: true
+    collection: "company",
+    strict: true,
+    versionKey: false,
+    timestamps: true,
 });
 
-export const companyModel = mongoose.model('Company',companySchema);
+export const companyModel = mongoose.model('company',companySchema);
