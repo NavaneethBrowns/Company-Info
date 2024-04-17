@@ -1,0 +1,42 @@
+<form [formGroup]="companyForm">
+  <div class="d-flex justify-content-center">
+    <div class="row">
+      <div class="col-6">
+        <p>
+          <label for="companyName">Company Name </label>
+          <br>
+          <input type="text" id="companyName" name="companyName" formControlName="companyName">
+        </p>
+       
+        <p>
+          <label for="CompanyAddress">Company Address</label>
+          <br>
+          <input type="text" id="CompanyAddress" name="CompanyAddress" formControlName="CompanyAddress">
+        </p>
+   
+        <p>
+          <label for="country">Country </label>
+          <select id="country" name="country" formControlName="country">
+            <option value="1">India</option>
+            <option value="2">USA</option>
+            <option value="3">England</option>
+            <option value="4">Singapore</option>
+          </select>
+        </p>
+      </div>
+      <div class="col-6">
+        
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col-6">
+  
+      </div>
+    </div> 
+    <div class="row">
+      <p>
+        <button type="submit">Submit</button>
+      </p>
+    </div> 
+  </div>
+</form>

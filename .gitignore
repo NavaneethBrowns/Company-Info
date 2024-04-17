@@ -1,11 +1,2 @@
-/BE/node_modules
-/FE/companyinfo/node_modules
-
-# Ignore compiled files
-*.log
-*.tmp
-*.out
-
-# Ignore IDE and editor files
-.idea/
-.vscode/
+/APP/FE/node_modules
+/APP/BE/node_modules
